@@ -4,6 +4,6 @@ The previous version of this, made by [sampoder](https://github.com/sampoder) us
 
 --
 
-Just set a SLACK_TOKEN and a REDIS_URL to your .env, upload some images, and you should be good to go!
+Just set a SLACK_TOKEN and a REDIS_URL to your .env, upload some images, and you should be good to go! For the automatic pfp changing, you should setup a service like Uptime.com to ping /api/set-profile every 5-10 minutes. 
 
 You should also change the website in /pages.
