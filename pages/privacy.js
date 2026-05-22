@@ -5,7 +5,7 @@ export default function Privacy() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>lynn's pfp</title>
+        <title>LowPolyPhosphorus's pfp</title>
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>privacy policy</h1>
@@ -50,10 +50,10 @@ export default function Privacy() {
           <p>they are also deleted every single time this website is redeployed for an update.</p>
 
           <h2>contact</h2>
-          <p>if you have questions, check out the <a href="https://github.com/whatbeato/pfp" style={{ color: '#ec3750' }}>source code on github</a>.</p>
+<p>if you have questions, check out the <a href="https://github.com/LowPolyPhosphorus/pfp" style={{ color: '#000080' }}>source code on github</a>.</p>
 
           <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-            <a href="/" style={{ color: '#ec3750' }}>← back to home</a>
+            <a href="/" style={{ color: '#000080' }}>← back to home</a>
           </div>
         </div>
       </main>

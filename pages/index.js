@@ -24,102 +24,75 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>lynn's pfp</title>
+        <title>LowPolyPhosphorus's pfp</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <img src='/api/current/' className={styles.avatar} />
-        <h1 className={styles.title + ' header-title-name'}>
-          lynn beato
-        </h1>
-        {lastLocation && (
-          <p style={{ marginBottom: '2rem', color: '#666' }}>
-            last person that changed my pfp was based in <strong>{lastLocation}</strong>
-          </p>
-        )}
+        <div className={styles['win98-window']} style={{ textAlign: 'center', padding: '2rem', margin: '1rem' }}>
+          <img src='/api/current/' className={styles.avatar} />
+          <h1 className={styles.title + ' header-title-name'}>
+            LowPolyPhosphorus
+          </h1>
+          {lastLocation && (
+            <p className={styles['status-bar']}>
+              last person that changed my pfp was based in <strong>{lastLocation}</strong>
+            </p>
+          )}
+        </div>
+
         <div className={styles.grid}>
           <a
-            href={"/api/photo" }
+            href={"/api/photo"}
             className={styles.card + ' post'}
           >
-            <h3>pull a random image &rarr;</h3>
-            <p>idk why you want ts but you can have it</p>
+            <h3>📷 pull a random image</h3>
+            <p>idk why you want this but you can have it</p>
           </a>
           <a
             href={"/api/set-profile"}
             className={styles.card + ' post'}
           >
-            <h3>change my pfp &rarr;</h3>
+            <h3>🖼️ change my pfp</h3>
             <p>changes my pfp on the hack club slack, have fun with it!</p>
           </a>
         </div>
-        <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+
+        <div className={styles['inline-form']}>
           {!showPasswordInput ? (
             <button 
               onClick={() => setShowPasswordInput(true)}
-              style={{
-                background: 'transparent',
-                border: '1px solid #333',
-                color: '#888',
-                padding: '0.5rem 1rem',
-                borderRadius: '5px',
-                cursor: 'pointer',
-                fontSize: '0.9rem'
-              }}
+              className={styles['win98-button']}
             >
-              bypass rate limit?
+              🔑 bypass rate limit?
             </button>
           ) : (
-            <form onSubmit={handleBypassSubmit} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center' }}>
+            <form onSubmit={handleBypassSubmit} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
               <input
                 type="password"
                 placeholder="enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{
-                  background: '#252525',
-                  border: '1px solid #333',
-                  color: '#e0e0e0',
-                  padding: '0.5rem',
-                  borderRadius: '5px',
-                  fontSize: '0.9rem'
-                }}
+                className={styles['win98-input']}
               />
               <button
                 type="submit"
-                style={{
-                  background: '#ec3750',
-                  border: 'none',
-                  color: 'white',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  fontSize: '0.9rem'
-                }}
+                className={styles['win98-button']}
               >
-                go
+                OK
               </button>
               <button
                 type="button"
                 onClick={() => setShowPasswordInput(false)}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid #333',
-                  color: '#888',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  fontSize: '0.9rem'
-                }}
+                className={styles['win98-button']}
               >
-                cancel
+                Cancel
               </button>
             </form>
           )}
         </div>
       </main>
       <footer className={styles.footer}>
-        <a href="https://github.com/whatbeato/pfp">source code here</a>
+        <a href="https://github.com/LowPolyPhosphorus/pfp">source code here</a>
         {' • '}
         <a href="/privacy">privacy policy</a>
       </footer>

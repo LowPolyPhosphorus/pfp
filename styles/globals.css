@@ -1,18 +1,51 @@
+/* Windows 98 Classic Theme - globals */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
+  font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, Geneva, sans-serif;
+  background-color: #008080;
+  color: #000000;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #551A8B;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Win98 Scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: #C0C0C0;
+}
+::-webkit-scrollbar-thumb {
+  background: #C0C0C0;
+  border: 2px solid;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF;
+}
+::-webkit-scrollbar-button {
+  background: #C0C0C0;
+  border: 2px solid;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF;
+  display: block;
+  height: 16px;
+}
+
+/* Win98 selection */
+::selection {
+  background: #000080;
+  color: #FFFFFF;
 }
