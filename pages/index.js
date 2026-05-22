@@ -45,14 +45,14 @@ export default function Home() {
             href={"/api/photo"}
             className={styles.card + ' post'}
           >
-            <h3>📷 pull a random image</h3>
+            <h3><img src="/icons/camera.png" alt="" style={{ width: '24px', height: '24px', verticalAlign: 'middle', marginRight: '6px' }} /> pull a random image</h3>
             <p>idk why you want this but you can have it</p>
           </a>
           <a
             href={"/api/set-profile"}
             className={styles.card + ' post'}
           >
-            <h3>🖼️ change my pfp</h3>
+            <h3><img src="/icons/pictureframe.png" alt="" style={{ width: '24px', height: '24px', verticalAlign: 'middle', marginRight: '6px' }} /> change my pfp</h3>
             <p>changes my pfp on the hack club slack, have fun with it!</p>
           </a>
         </div>
@@ -63,7 +63,7 @@ export default function Home() {
               onClick={() => setShowPasswordInput(true)}
               className={styles['win98-button']}
             >
-              🔑 bypass rate limit?
+              <img src="/icons/padlock.png" alt="" style={{ width: '18px', height: '18px', verticalAlign: 'middle', marginRight: '4px' }} /> bypass rate limit?
             </button>
           ) : (
             <form onSubmit={handleBypassSubmit} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
