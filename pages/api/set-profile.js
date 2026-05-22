@@ -47,7 +47,7 @@ export default async (req, res) => {
       return res.status(403).json({
         error: 'Browser required',
         message: 'please use a web browser to change my pfp! curl and similar tools arent allowed. you can still bypass this by just setting a browser agent though :)',
-        hint: 'https://pfp-4mm5.onrender.com/images/ in your browser'
+        hint: 'https://pfp.lowpolyphosphor.us/images/ in your browser'
       });
     }
   }
@@ -148,5 +148,5 @@ export default async (req, res) => {
   await db.set('image', photo);
   await db.set('last_profile_change', now.toString());
   await db.set('last_changer_location', location);
-  res.redirect('https://pfp.lynn.pt');
+  res.redirect('https://pfp.lowpolyphosphor.us');
 };
