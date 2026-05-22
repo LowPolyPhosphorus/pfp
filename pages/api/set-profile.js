@@ -47,7 +47,7 @@ export default async (req, res) => {
       return res.status(403).json({
         error: 'Browser required',
         message: 'please use a web browser to change my pfp! curl and similar tools arent allowed. you can still bypass this by just setting a browser agent though :)',
-        hint: 'visit https://pfp.lynn.pt in your browser'
+        hint: 'https://pfp-4mm5.onrender.com/images/ in your browser'
       });
     }
   }
@@ -110,7 +110,7 @@ export default async (req, res) => {
   const client = new WebClient();
   const context = require.context('../../public/images', true)
   let photos = context.keys()
-  let photo = photos[Math.floor(Math.random() * photos.length)].replace('./', 'https://pfp.lynn.pt/images/')
+  let photo = photos[Math.floor(Math.random() * photos.length)].replace('./', 'https://pfp-4mm5.onrender.com/images/')
   const image = await axios.get(photo, {
     responseType: "arraybuffer",
   });
