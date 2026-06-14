@@ -1,26 +1,22 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react'
-
 export default function Home() {
   const [lastLocation, setLastLocation] = useState(null);
   const [password, setPassword] = useState('');
   const [showPasswordInput, setShowPasswordInput] = useState(false);
-
   useEffect(() => {
     fetch('/api/last-changer')
       .then(res => res.json())
       .then(data => setLastLocation(data.location))
       .catch(() => setLastLocation(null));
   }, []);
-
   const handleBypassSubmit = (e) => {
     e.preventDefault();
     if (password) {
       window.location.href = `/api/set-profile?bypass=${encodeURIComponent(password)}`;
     }
   };
-
   return (
     <div className={styles.container}>
       <Head>
@@ -39,7 +35,6 @@ export default function Home() {
             </p>
           )}
         </div>
-
         <div className={styles.grid}>
           <a
             href={"/api/photo"}
@@ -51,12 +46,13 @@ export default function Home() {
           <a
             href={"/api/set-profile"}
             className={styles.card + ' post'}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <h3><img src="/icons/pictureframe.png" alt="" style={{ width: '24px', height: '24px', verticalAlign: 'middle', marginRight: '6px' }} /> change my pfp</h3>
             <p>changes my pfp on the hack club slack, have fun with it!</p>
           </a>
         </div>
-
         <div className={styles['inline-form']}>
           {!showPasswordInput ? (
             <button 
