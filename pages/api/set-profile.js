@@ -148,5 +148,5 @@ export default async (req, res) => {
   await db.set('image', photo);
   await db.set('last_profile_change', now.toString());
   await db.set('last_changer_location', location);
-  res.redirect('https://pfp.lowpolyphosphor.us');
+  res.status(200).json({ success: true, image: photo });
 };
