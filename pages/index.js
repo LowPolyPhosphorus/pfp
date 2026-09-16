@@ -48,14 +48,14 @@ export default function Home() {
           )}
         </div>
         <div className={styles.grid}>
-          
+          <a
             href={"/api/photo"}
             className={styles.card + ' post'}
           >
             <h3><img src="/icons/camera.png" alt="" style={{ width: '24px', height: '24px', verticalAlign: 'middle', marginRight: '6px' }} /> pull a random image</h3>
             <p>idk why you want this but you can have it</p>
           </a>
-          
+          <a
             href={"/api/set-profile"}
             className={styles.card + ' post'}
             target="_blank"
@@ -67,7 +67,7 @@ export default function Home() {
         </div>
         <div className={styles['inline-form']}>
           {!showPasswordInput ? (
-            <button 
+            <button
               onClick={() => setShowPasswordInput(true)}
               className={styles['win98-button']}
             >
