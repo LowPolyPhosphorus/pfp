@@ -6,7 +6,7 @@ export default function Home() {
   const [lastLocation, setLastLocation] = useState(null);
   const [password, setPassword] = useState('');
   const [showPasswordInput, setShowPasswordInput] = useState(false);
-  const [credits, setCredits] = useState({});
+  const [credit, setCredit] = useState(null);
 
   useEffect(() => {
     fetch('/api/last-changer')
@@ -16,10 +16,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    fetch('/credits.json')
-      .then(res => res.json())
-      .then(setCredits)
-      .catch(() => setCredits({}));
+    Promise.all([
+      fetch('/api/current-file').then(res => res.json()),
+      fetch('/credits.json').then(res => res.json())
+    ])
+      .then(([{ filename }, credits]) => {
+        setCredit(filename ? credits[filename] ?? null : null);
+      })
+      .catch(() => setCredit(null));
   }, []);
 
   const handleBypassSubmit = (e) => {
@@ -44,6 +48,11 @@ export default function Home() {
           {lastLocation && (
             <p className={styles['status-bar']}>
               last person that changed my pfp was based in <strong>{lastLocation}</strong>
+            </p>
+          )}
+          {credit && (
+            <p className={styles['status-bar']}>
+              credit: <strong>{credit}</strong>
             </p>
           )}
         </div>
@@ -98,16 +107,6 @@ export default function Home() {
             </form>
           )}
         </div>
-        {Object.keys(credits).length > 0 && (
-          <div className={styles['win98-window']} style={{ padding: '1rem', margin: '1rem', fontSize: '0.85rem' }}>
-            <h4>credits</h4>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {Object.entries(credits).map(([file, credit]) => (
-                <li key={file}>{file}: {credit ?? 'unknown'}</li>
-              ))}
-            </ul>
-          </div>
-        )}
       </main>
       <footer className={styles.footer}>
         <a href="https://github.com/LowPolyPhosphorus/pfp">source code here</a>
