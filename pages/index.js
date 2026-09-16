@@ -1,22 +1,34 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react'
+
 export default function Home() {
   const [lastLocation, setLastLocation] = useState(null);
   const [password, setPassword] = useState('');
   const [showPasswordInput, setShowPasswordInput] = useState(false);
+  const [credits, setCredits] = useState({});
+
   useEffect(() => {
     fetch('/api/last-changer')
       .then(res => res.json())
       .then(data => setLastLocation(data.location))
       .catch(() => setLastLocation(null));
   }, []);
+
+  useEffect(() => {
+    fetch('/credits.json')
+      .then(res => res.json())
+      .then(setCredits)
+      .catch(() => setCredits({}));
+  }, []);
+
   const handleBypassSubmit = (e) => {
     e.preventDefault();
     if (password) {
       window.location.href = `/api/set-profile?bypass=${encodeURIComponent(password)}`;
     }
   };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -36,14 +48,14 @@ export default function Home() {
           )}
         </div>
         <div className={styles.grid}>
-          <a
+          
             href={"/api/photo"}
             className={styles.card + ' post'}
           >
             <h3><img src="/icons/camera.png" alt="" style={{ width: '24px', height: '24px', verticalAlign: 'middle', marginRight: '6px' }} /> pull a random image</h3>
             <p>idk why you want this but you can have it</p>
           </a>
-          <a
+          
             href={"/api/set-profile"}
             className={styles.card + ' post'}
             target="_blank"
@@ -86,6 +98,16 @@ export default function Home() {
             </form>
           )}
         </div>
+        {Object.keys(credits).length > 0 && (
+          <div className={styles['win98-window']} style={{ padding: '1rem', margin: '1rem', fontSize: '0.85rem' }}>
+            <h4>credits</h4>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              {Object.entries(credits).map(([file, credit]) => (
+                <li key={file}>{file}: {credit ?? 'unknown'}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </main>
       <footer className={styles.footer}>
         <a href="https://github.com/LowPolyPhosphorus/pfp">source code here</a>
